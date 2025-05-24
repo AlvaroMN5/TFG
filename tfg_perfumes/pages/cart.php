@@ -1,0 +1,1 @@
+<h2>Carrito</h2><p>Esta es tu cesta de productos (funcionalidad en desarrollo).</p>
