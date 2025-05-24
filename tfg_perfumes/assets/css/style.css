@@ -1,1 +1,16 @@
 body { font-family: Arial; }
+
+.product-image {
+    height: 200px;
+    object-fit: contain;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px 5px 0 0;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}

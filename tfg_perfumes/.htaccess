@@ -10,7 +10,8 @@ RewriteRule ^catalogo/([0-9]+)$ pages/product.php?id=$1 [L]
 RewriteRule ^catalogo$ pages/catalog.php [L]
 RewriteRule ^carrito$ pages/cart.php [L]
 RewriteRule ^mi-cuenta$ pages/account.php [L]
-
+# Regla para register
+RewriteRule ^registro$ pages/register.php [L]
 # Proteger archivos sensibles
 <FilesMatch "\.(env|config\.php|db\.php)$">
     Order allow,deny

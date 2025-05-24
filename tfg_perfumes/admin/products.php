@@ -17,7 +17,13 @@ try {
     die("Error al cargar productos: " . $e->getMessage());
 }
 ?>
-
+<form action="process/upload_product.php" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="product_image" class="form-label">Imagen del Producto</label>
+        <input type="file" class="form-control" id="product_image" name="product_image" accept="image/*" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Subir Imagen</button>
+</form>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Gestión de Productos</h2>
     <a href="<?= BASE_URL ?>admin/add_product.php" class="btn btn-success">Añadir Producto</a>
