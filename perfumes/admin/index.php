@@ -1,0 +1,1 @@
+<?php echo '<h2>Panel de administración</h2>'; ?>
