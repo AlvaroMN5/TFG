@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /prueba%20php/tfg_perfumes/
+
+# Redireccionar a HTTPS si está disponible
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# URLs amigables
+RewriteRule ^catalogo/([0-9]+)$ pages/product.php?id=$1 [L]
+RewriteRule ^catalogo$ pages/catalog.php [L]
+RewriteRule ^carrito$ pages/cart.php [L]
+RewriteRule ^mi-cuenta$ pages/account.php [L]
+
+# Proteger archivos sensibles
+<FilesMatch "\.(env|config\.php|db\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
