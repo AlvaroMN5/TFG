@@ -1,6 +1,7 @@
 <?php
 // Iniciar sesión
 session_start();
+define('BASE_URL', '/prueba%20php/tfg_perfumes/'); // Ajusta a la URL raíz real en tu servidor o localhost
 
 // Incluir archivos esenciales
 require_once 'config.php';
