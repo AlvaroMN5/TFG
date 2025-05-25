@@ -8,6 +8,20 @@
     <link href="<?= BASE_URL ?>assets/css/style.css" rel="stylesheet">
 </head>
 <body>
+    <?php session_start(); ?>
+<nav>
+    <ul>
+        <li><a href="<?= BASE_URL ?>index.php">Inicio</a></li>
+        <li><a href="<?= BASE_URL ?>pages/catalogo.php">Catálogo</a></li>
+        
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <li><a href="<?= BASE_URL ?>process/logout.php">Cerrar sesión</a></li>
+        <?php else: ?>
+            <li><a href="<?= BASE_URL ?>pages/login.php">Login</a></li>
+        <?php endif; ?>
+    </ul>
+</nav>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="<?= BASE_URL ?>"><?= SITE_NAME ?></a>
