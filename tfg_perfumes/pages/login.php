@@ -1,11 +1,5 @@
 <?php
 require_once __DIR__ . '/../includes/init.php';  // Usa __DIR__ para rutas absolutas
-// Debugging
-echo "<pre>";
-echo "SESSION: "; print_r($_SESSION);
-echo "BASE_URL: " . BASE_URL;
-echo "POST data: "; print_r($_POST);
-echo "</pre>";
 
 // Si el usuario ya está logueado, redirigir
 if (isset($_SESSION['user_id'])) {
