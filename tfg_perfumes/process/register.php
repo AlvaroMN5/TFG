@@ -43,7 +43,8 @@ try {
 
     // Crear el usuario
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, 'user')");
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password, is_admin) VALUES (?, ?, ?, 0)");
+
     $stmt->execute([$name, $email, $hashed_password]);
 
     // Iniciar sesión automáticamente
@@ -54,8 +55,9 @@ try {
 
     header("Location: " . BASE_URL);
     
-} catch (PDOException $e) {
-    $_SESSION['register_error'] = "Error al registrar el usuario";
-    header("Location: " . BASE_URL . "pages/register.php");
+}  catch (PDOException $e) {
+    echo "Error al registrar el usuario: " . $e->getMessage();
+    exit;
 }
+
 ?>
