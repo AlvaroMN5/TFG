@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /prueba%20php/tfg_perfumes/
+RewriteBase /prueba_php/tfg_perfumes/
 
 # Redireccionar a HTTPS si está disponible
 RewriteCond %{HTTPS} off
