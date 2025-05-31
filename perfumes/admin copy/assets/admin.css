@@ -1,0 +1,36 @@
+/* Estilos para tablas administrativas */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    background: #4a76a8;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.btn-small.delete {
+    background: #dc3545;
+}
+
+.btn-small:hover {
+    opacity: 0.9;
+}

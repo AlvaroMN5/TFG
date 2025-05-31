@@ -1,76 +1,47 @@
 <?php
-require_once 'includes/db.php';
-require_once 'includes/functions.php';
+require_once '../includes/auth.php';
+require_admin();
 
-// Parámetros de búsqueda
-$search = $_GET['search'] ?? '';
-$order = $_GET['order'] ?? 'name';
-
-// Consulta SQL
-$sql = "SELECT * FROM products WHERE 1=1";
-
-if (!empty($search)) {
-    $sql .= " AND (name LIKE :search OR description LIKE :search)";
-    $params[':search'] = "%$search%";
-}
-
-// Ordenación
-switch ($order) {
-    case 'price_asc':
-        $sql .= " ORDER BY price ASC";
-        break;
-    case 'price_desc':
-        $sql .= " ORDER BY price DESC";
-        break;
-    default:
-        $sql .= " ORDER BY name";
-}
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute($params ?? []);
+// Obtener todos los productos
+require_once '../includes/db.php';
+$stmt = $pdo->query("SELECT id, name, price, stock FROM products");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-include 'includes/header.php';
 ?>
 
-<div class="container">
-    <h1>Catálogo de Perfumes</h1>
+<?php include '../includes/admin_header.php'; ?>
+
+<div class="admin-container">
+    <h2>Gestión de Productos</h2>
     
-    <!-- Barra de búsqueda -->
-    <form method="get" class="search-bar">
-        <input type="text" name="search" placeholder="Buscar perfumes..." 
-               value="<?= htmlspecialchars($search) ?>">
-        <button type="submit">Buscar</button>
-    </form>
-    
-    <!-- Filtros de ordenación -->
-    <div class="sort-options">
-        Ordenar por:
-        <a href="?search=<?= urlencode($search) ?>&order=name" 
-           class="<?= $order == 'name' ? 'active' : '' ?>">Nombre</a>
-        <a href="?search=<?= urlencode($search) ?>&order=price_asc"
-           class="<?= $order == 'price_asc' ? 'active' : '' ?>">Precio (↑)</a>
-        <a href="?search=<?= urlencode($search) ?>&order=price_desc"
-           class="<?= $order == 'price_desc' ? 'active' : '' ?>">Precio (↓)</a>
+    <div class="admin-actions">
+        <a href="add_product.php" class="admin-btn">Añadir Producto</a>
     </div>
     
-    <!-- Lista de productos -->
-    <div class="product-list">
-        <?php if (empty($products)): ?>
-            <p>No se encontraron productos.</p>
-        <?php else: ?>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
             <?php foreach ($products as $product): ?>
-                <div class="product-card">
-                    <img src="images/products/<?= $product['image'] ?>" 
-                         alt="<?= htmlspecialchars($product['name']) ?>">
-                    <h3><?= htmlspecialchars($product['name']) ?></h3>
-                    <p class="price">$<?= number_format($product['price'], 2) ?></p>
-                    <a href="product.php?id=<?= $product['id'] ?>" class="btn">Ver Detalles</a>
-                    <a href="cart.php?add=<?= $product['id'] ?>" class="btn">Añadir al Carrito</a>
-                </div>
+            <tr>
+                <td><?= $product['id'] ?></td>
+                <td><?= htmlspecialchars($product['name']) ?></td>
+                <td>$<?= number_format($product['price'], 2) ?></td>
+                <td><?= $product['stock'] ?></td>
+                <td>
+                    <a href="edit_product.php?id=<?= $product['id'] ?>" class="btn-small">Editar</a>
+                    <a href="delete_product.php?id=<?= $product['id'] ?>" class="btn-small delete">Eliminar</a>
+                </td>
+            </tr>
             <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+        </tbody>
+    </table>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/admin_footer.php'; ?>
