@@ -25,7 +25,7 @@
         <?php else: ?>
             <li><a href="login.php">Iniciar Sesión</a></li>
             <li><a href="register.php">Registrarse</a></li>
-            <li><a href="#" id="contactButton">Contacto</a></li>
+            <li><a href="contact.php" id="contactButton">Contacto</a></li>
         <?php endif; ?>
     </ul>
 </nav>
