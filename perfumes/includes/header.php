@@ -1,4 +1,6 @@
-
+<?php
+session_start(); // Siempre al inicio para manejar sesiones
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,23 +14,24 @@
         <div class="container">
             <div class="logo">PerfumeShop</div>
             <nav>
-    <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="products.php">Perfumes</a></li> <!-- Cambiado de # a products.php -->
-        <li><a href="cart.php">Carrito</a></li>
-        <?php if(isset($_SESSION['user_id'])): ?>
-            <?php if(isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
-                <li><a href="admin/" class="admin-link">Panel Admin</a></li>
-            <?php endif; ?>
-            <li><a href="profile.php">Mi Cuenta</a></li>
-            <li><a href="logout.php">Cerrar Sesión</a></li>
-        <?php else: ?>
-            <li><a href="login.php">Iniciar Sesión</a></li>
-            <li><a href="register.php">Registrarse</a></li>
-            <li><a href="contact.php" id="contactButton">Contacto</a></li>
-        <?php endif; ?>
-    </ul>
-</nav>
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="products.php">Perfumes</a></li>
+                    <li><a href="cart.php">Carrito</a></li>
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                        <?php if(isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                            <li><a href="admin/" class="admin-link">Panel Admin</a></li>
+                        <?php endif; ?>
+                        <li><a href="profile.php">Mi Cuenta</a></li>
+                        <li><a href="logout.php">Cerrar Sesión</a></li>
+                    <?php else: ?>
+                        <li><a href="login.php">Iniciar Sesión</a></li>
+                        <li><a href="register.php">Registrarse</a></li>
+                    <?php endif; ?>
+                    <!-- Botón de contacto visible para todos -->
+                    <li><a href="#" id="contactBtn">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <main class="container">
