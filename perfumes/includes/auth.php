@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // Redirigir si no está logueado
 function require_login() {

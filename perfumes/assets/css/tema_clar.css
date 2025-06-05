@@ -1,18 +1,19 @@
+/*
 :root {
-  /* Paleta de colores claros pero definidos */
-  --color-primario: #d4a59a; /* Rosa suave */
-  --color-secundario: #a5c4d4; /* Azul claro */
-  --color-fondo: #f9f3f0; /* Fondo muy claro */
-  --color-texto: #5d4037; /* Marrón oscuro para contraste */
-  --color-bordes: #e0e0e0; /* Gris muy claro */
-  --color-botones: #d4a59a; /* Igual que primario */
-  --color-botones-hover: #c19185; /* Versión más oscura */
-  --color-header: #ffffff; /* Blanco */
-  --color-footer: #333333; /* Oscuro para contraste */
-  --color-texto-footer: #ffffff; /* Blanco */
+   Paleta de colores claros pero definidos 
+  --color-primario: #d4a59a; /* Rosa suave 
+  --color-secundario: #a5c4d4; /* Azul claro *
+  --color-fondo: #f9f3f0; /* Fondo muy claro *
+  --color-texto: #5d4037; /* Marrón oscuro para contraste *
+  --color-bordes: #e0e0e0; /* Gris muy claro *
+  --color-botones: #d4a59a; /* Igual que primario *
+  --color-botones-hover: #c19185; /* Versión más oscura *
+  --color-header: #333333; /* Blanco *
+  --color-footer: #333333; /* Oscuro para contraste *
+  --color-texto-footer: #ffffff; /* Blanco *
 }
 
-/* Reset y estilos base */
+/* Reset y estilos base *
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +30,7 @@ body {
   min-height: 100vh;
 }
 
-/* Tipografía */
+/* Tipografía *
 h1, h2, h3, h4 {
   color: var(--color-texto);
   margin-bottom: 1rem;
@@ -44,7 +45,7 @@ h2 {
   font-size: 1.8rem;
 }
 
-/* Contenedores */
+/* Contenedores *
 .container {
   width: 100%;
   max-width: 1200px;
@@ -53,14 +54,14 @@ h2 {
   flex: 1;
 }
 
-/* Header */
+/* Header *
 header {
   background-color: var(--color-header);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
 }
 
-/* Navegación */
+/* Navegación *
 nav ul {
   display: flex;
   list-style: none;
@@ -77,7 +78,7 @@ nav a:hover {
   color: var(--color-primario);
 }
 
-/* Botones */
+/* Botones *
 .btn {
   display: inline-block;
   background-color: var(--color-botones);
@@ -94,7 +95,7 @@ nav a:hover {
   background-color: var(--color-botones-hover);
 }
 
-/* Formularios */
+/* Formularios *
 input, select, textarea {
   width: 100%;
   padding: 0.7rem;
@@ -103,7 +104,7 @@ input, select, textarea {
   border-radius: 4px;
 }
 
-/* Tablas */
+/* Tablas *
 table {
   width: 100%;
   border-collapse: collapse;
@@ -122,7 +123,7 @@ th {
   background-color: var(--color-fondo);
 }
 
-/* Footer */
+/* Footer *
 footer {
   background-color: var(--color-footer);
   color: var(--color-texto-footer);
@@ -131,11 +132,469 @@ footer {
   margin-top: auto;
 }
 
-/* Efectos de tarjetas */
+/* Efectos de tarjetas *
 .card {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+}
+/* Estilos específicos para el formulario de registro *
+.registration-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-bordes);
+}
+
+.registration-header h1 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--color-bordes);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 2px rgba(212, 165, 154, 0.2);
+}
+
+.register-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: var(--color-botones-hover);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--color-texto);
+}
+
+.login-link a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el mensaje de activación de Windows (si es necesario mantenerlo) *
+.windows-activation {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-left: 4px solid #ccc;
+    color: #666;
+    font-size: 0.9rem;
+}
+/* Estilos para la sección de categorías *
+.categories-section {
+    padding: 2rem 0;
+    background-color: var(--color-fondo);
+}
+
+.categories-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.categories-header h1 {
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.categories-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-primario);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.category-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.05);
+}
+
+.category-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.category-info h3 {
+    color: var(--color-texto);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.category-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-primario);
+    color: blue;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.explore-btn:hover {
+    background-color: var(--color-botones-hover);
+}
+
+/* Responsive *
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .category-image {
+        height: 150px;
+    }
+}*/
+
+/* Variables de color y tipografía */
+:root {
+  --color-primario: #d4a59a; /* Rosa suave para perfumes */
+  --color-secundario: #a5c4d4; /* Azul claro */
+  --color-fondo: blue; /* Fondo beige claro */
+  --color-texto: #5d4037; /* Marrón oscuro */
+  --color-header: #ffffff; /* Blanco */
+  --color-footer: #333333; /* Negro suave */
+  --color-texto-footer: #ffffff;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --transicion: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header y Navbar */
+.header {
+  background-color: var(--color-header);
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: var(--transicion);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-primario);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primario);
+  transition: var(--transicion);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn-login, .btn-register {
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: var(--transicion);
+  text-decoration: none;
+}
+
+.btn-login {
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+}
+
+.btn-login:hover {
+  background-color: rgba(212, 165, 154, 0.1);
+}
+
+.btn-register {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+.btn-register:hover {
+  background-color: #c19185;
+  transform: translateY(-2px);
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-footer);
+  color: var(--color-texto-footer);
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilos responsive */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-texto);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    margin-top: 1rem;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .nav-item {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .nav-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .nav-buttons.active {
+    display: flex;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Estilos para todas las páginas */
+.page-title {
+  color: var(--color-primario);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-primario);
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transicion);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transicion);
+}
+
+.btn:hover {
+  background-color: var(--color-botones-hover);
+  transform: translateY(-2px);
 }

@@ -1,4 +1,4 @@
-/* Estilos básicos */
+/* Estilos básicos 
 * {
     margin: 0;
     padding: 0;
@@ -514,4 +514,56 @@ th {
 
 .hidden {
     display: none;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos para el formulario dentro del modal */
+#contactForm {
+    margin-top: 20px;
+}
+
+#contactForm .form-group {
+    margin-bottom: 15px;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#contactForm textarea {
+    height: 120px;
+    resize: vertical;
 }

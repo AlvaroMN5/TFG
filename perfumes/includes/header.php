@@ -1,39 +1,40 @@
-<?php
-session_start(); // Siempre al inicio para manejar sesiones
+    <?php
+// header.php - Versión corregida
+require_once __DIR__ . '/config.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Perfumes</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/tema_clar.css">
-
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">PerfumeShop</div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="products.php">Perfumes</a></li>
-                    <li><a href="cart.php">Carrito</a></li>
-                    <?php if(isset($_SESSION['user_id'])): ?>
-                        <?php if(isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
-                            <li><a href="admin/" class="admin-link">Panel Admin</a></li>
-                        <?php endif; ?>
-                        <li><a href="profile.php">Mi Cuenta</a></li>
-                        <li><a href="logout.php">Cerrar Sesión</a></li>
-                    <?php else: ?>
-                        <li><a href="login.php">Iniciar Sesión</a></li>
-                        <li><a href="register.php">Registrarse</a></li>
-                    <?php endif; ?>
-                    <!-- Botón de contacto visible para todos -->
-                    <li><a href="#" id="contactBtn">Contacto</a></li>
-                </ul>
-            </nav>
+    <title>Todo Perfumes - <?php echo $pageTitle ?? 'Inicio'; ?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/estilos.css">
+    <link rel="icon" href="images/favicon.ico">
+    </head>
+    <body>
+    <header class="header" id="header">
+        <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Todo Perfumes">
+            <h1>Todo Perfumes</h1>
         </div>
+        
+       <ul class="nav-menu">
+            <li class="nav-item"><a href="<?php echo BASE_URL; ?>index.php" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="<?php echo BASE_URL; ?>products.php" class="nav-link">Perfumes</a></li>
+            <li class="nav-item"><a href="<?php echo BASE_URL; ?>cart.php" class="nav-link">Mi Cesta</a></li>
+            <li class="nav-item"><a href="<?php echo BASE_URL; ?>contact.php" class="nav-link" id="contact-link">Contacto</a></li>
+        </ul>
+        <div class="nav-buttons">   
+            <a href="login.php" class="btn-login">Iniciar Sesión</a>
+            <a href="register.php" class="btn-register">Registrarse</a>
+        </div>
+        
+        <button class="hamburger">☰</button>
+        </nav>
     </header>
-    <main class="container">
+    
+    <main class="main-content">
+
+    

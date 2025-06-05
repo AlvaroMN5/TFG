@@ -1,29 +1,17 @@
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> Tienda de Perfumes. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Modal de Contacto -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>Contáctanos</h3>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="email" id="contactEmail" placeholder="Tu correo electrónico" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="contactMessage" placeholder="Tu mensaje..." required></textarea>
-                </div>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
-            <div id="contactResponse" class="response-message"></div>
-        </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; <?php echo date('Y'); ?> Todo Perfumes. Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/?locale=es_ES"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
     </div>
-
-    <script src="assets/js/script.js"></script>
+  </footer>
+  
+  <script src="js/main.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
