@@ -6,10 +6,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 <head>
     <meta charset="UTF-8">
     <title>Panel Admin</title>
-    <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
-<link rel="stylesheet" href="../assets/css/tema_clar.css">
- <script src="js/theme-manager.js" defer></script>
+    <link rel="stylesheet" href="assets/admin.css">
+<script src="assets/main.js" defer></script>
 </head>
 <body>
 <div class="admin-container">

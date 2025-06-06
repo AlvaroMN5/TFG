@@ -1,6 +1,6 @@
 /* Variables de color y tipografía */
 :root {
-  --color-primario: #d4a59a; /* Rosa suave para perfumes */
+  --color-primario: #d49081; /* Rosa suave para perfumes */
   --color-secundario: #a5c4d4; /* Azul claro */
   --color-fondo: #f9f3f0; /* Fondo beige claro */
   --color-texto: #5d4037; /* Marrón oscuro */
@@ -20,8 +20,8 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--color-fondo, #f9f3f0);
+  color: var(--color-texto, #5d4037);
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -255,6 +255,7 @@ body {
   background-color: var(--color-botones-hover);
   transform: translateY(-2px);
 }
+
 /* Estilos para la sección de contacto */
 .contact-section {
     max-width: 600px;
@@ -312,6 +313,7 @@ body {
 #response-message .error {
     color: red;
 }
+
 .product-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -339,12 +341,580 @@ body {
     border-radius: 8px;
     background: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
 .product-card img {
-  max-width: 100%;
-  height: 200px; /* o el alto que prefieras */
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-avatar img {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px;
+  max-height: 32px;
+  border-radius: 50%;
   object-fit: cover;
   display: block;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.chevron {
+  font-size: 14px;
+  color: #666;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+  min-width: 150px;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.user-dropdown a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hero / Banner Principal */
+.hero {
+  position: relative;
+  background-image: url('../images/hero.jpg'); /* Ajusta la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.hero .hero-content h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.hero .hero-content p {
+  font-size: 1.1rem;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+/* Animación de aparición (fade-in) */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Orders / Mis Compras */
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.order-card {
+  background: #fff;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-texto);
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.order-details .status {
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  background-color: var(--color-secundario);
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.order-card a.btn {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* Responsive adicional */
+@media (max-width: 768px) {
+  .hero .hero-content h1 {
+    font-size: 2.3rem;
+  }
+  .product-card img {
+    height: 180px;
+  }
+}/* -----------------------------------
+   CARRUSEL DE IMÁGENES (5 slides)
+   ----------------------------------- */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;      /* Margen superior/inferior */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+
+  /* Altura responsiva: 60% de la ventana, con límites */
+  height: 60vh;
+  max-height: 600px;
+  min-height: 300px;
+}
+
+/* El contenedor de todos los slides ocupa 500% del ancho visible,
+   porque hay 5 slides, cada uno 100% del viewport. */
+.carousel-slides {
+  display: flex;
+  width: 500%;                 /* 5 × 100% */
+  height: 100%;                /* 100% de la altura de .carousel-container */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Cada slide ocupa 20% (100% ÷ 5 = 20%) del ancho de .carousel-slides */
+.carousel-slide {
+  flex: 0 0 20%;
+  height: 100%;                /* 100% de la altura de .carousel-container */
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* La imagen cubre el slide sin deformarse */
+  display: block;
+}
+
+/* Botones de navegación (flechas) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 2rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--color-texto);
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.carousel-btn.prev {
+  left: 1rem;
+}
+
+.carousel-btn.next {
+  right: 1rem;
+}
+
+/* Indicadores (puntos) */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.carousel-indicators .indicator {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-indicators .indicator.active,
+.carousel-indicators .indicator:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Responsive: ajustar altura y tamaño de flechas */
+@media (max-width: 1024px) {
+  .carousel-container {
+    height: 50vh;
+    max-height: 500px;
+    min-height: 250px;
+  }
+  .carousel-btn {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 40vh;
+    max-height: 350px;
+    min-height: 200px;
+  }
+  .carousel-btn {
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+
+/* -------------------------------
+   ESTILOS FORMULARIO DE CONTACTO
+   ------------------------------- */
+.contact-section input[type="email"],
+.contact-section textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;          /* Borde gris claro */
+  border-radius: 4px;              /* Esquinas redondeadas */
+  background-color: #fff;          /* Fondo blanco para contrastar */
+  font-size: 1rem;
+  color: var(--color-texto);
+  transition: border-color 0.3s;
+}
+
+.contact-section input[type="email"]:focus,
+.contact-section textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);  /* Borde en color primario al enfocarlo */
+  box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.3);
+}
+
+.contact-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+/* Ajuste responsive para mobile: hacer que textarea sea un poco más alto */
+@media (max-width: 600px) {
+  .contact-section textarea {
+    min-height: 150px;
+  }
+}
+/* -----------------------------------
+   ESTILOS PARA LA “TARJETA” DE LOGIN
+   (idéntico al formulario de contacto)
+   ----------------------------------- */
+.login-section {
+  max-width: 600px;           /* igual que contact, ancho limitado */
+  margin: 3rem auto;          /* centrado horizontal, margen superior */
+  padding: 2rem;
+  background: #ffffff;         /* fondo blanco */
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+}
+
+.login-section h2 {
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.login-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-primario);
+  margin-top: 0.5rem;
+}
+
+/* Margen entre cada campo del login */
+.login-section .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.login-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+/* Campos de usuario/contraseña */
+.login-section input[type="text"],
+.login-section input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: var(--color-texto);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-section input[type="text"]:focus,
+.login-section input[type="password"]:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.3);
+}
+
+/* Botón alineado a la izquierda dentro de la tarjeta */
+.login-section button.btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Enlaces de login (registro y olvidó contraseña) */
+.login-section .login-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.login-section .login-links a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+.login-section .login-links a:hover {
+  text-decoration: underline;
+}
+
+/* Ajuste responsivo para la tarjeta de login */
+@media (max-width: 600px) {
+  .login-section {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+  .login-section h2 {
+    font-size: 1.5rem;
+  }
+  .login-section input[type="text"],
+  .login-section input[type="password"] {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+  .login-section button.btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* -----------------------------------
+   ESTILOS PARA LA “TARJETA” DE REGISTRO
+   (idénticos a los de login/contacto)
+   ----------------------------------- */
+.register-section {
+  max-width: 600px;           /* ancho máximo igual al contacto */
+  margin: 3rem auto;          /* centrado y margen arriba/abajo */
+  padding: 2rem;
+  background: #ffffff;        /* fondo blanco */
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+}
+
+.register-section h2 {
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.register-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-primario);
+  margin-top: 0.5rem;
+}
+
+/* Separación entre cada campo */
+.register-section .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.register-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+/* Campos de texto / email / password: mismo estilo que contacto/login */
+.register-section input[type="text"],
+.register-section input[type="email"],
+.register-section input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;    /* borde gris claro */
+  border-radius: 4px;        /* esquinas redondeadas */
+  background-color: #fff;    /* fondo blanco */
+  font-size: 1rem;
+  color: var(--color-texto);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-section input[type="text"]:focus,
+.register-section input[type="email"]:focus,
+.register-section input[type="password"]:focus {
+  outline: none;
+  border-color: var(--color-primario);   /* borde rosa suave */
+  box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.3);
+}
+
+/* Botón alineado dentro de la tarjeta */
+.register-section button.btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Enlaces al pie de la tarjeta */
+.register-section .login-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.register-section .login-links a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.register-section .login-links a:hover {
+  text-decoration: underline;
+}
+
+/* Ajuste responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+  .register-section {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+  .register-section h2 {
+    font-size: 1.5rem;
+  }
+  .register-section input[type="text"],
+  .register-section input[type="email"],
+  .register-section input[type="password"] {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+  .register-section button.btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.logo img {
+  height: 80px; /* antes era 40px; ajústalo al tamaño que necesites */
+  width: auto;  /* para mantener la proporción original */
 }

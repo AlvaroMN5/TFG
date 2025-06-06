@@ -1,10 +1,12 @@
 <?php
+require_once '../includes/config.php';
 require_once '../includes/db.php';
-require_once '../includes/auth.php';
-require_admin();
+require_once '../includes/functions.php';
+
+
 // Solo administradores pueden acceder
-if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-    header("Location: ../index.php");
+if (!isset($_SESSION['user']) || $_SESSION['user']['is_admin'] !== 1) {
+    header("Location: ../login.php");
     exit;
 }
 

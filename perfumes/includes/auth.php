@@ -1,26 +1,30 @@
 <?php
+// Asegura que la sesión está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Redirigir si no está logueado
+// Requiere login para acceder
 function require_login() {
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: login.php");
+    if (!isset($_SESSION['user'])) {
+        header("Location: /prueba_php/proyecto/login.php");
         exit;
     }
 }
 
-// Redirigir si no es admin
+// Requiere que el usuario sea administrador
 function require_admin() {
     require_login();
-    if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
-        header("Location: ../index.php");
+    if (empty($_SESSION['user']['is_admin'])) {
+        header("Location: /prueba_php/proyecto/index.php");
         exit;
     }
 }
 
-// Cerrar sesión
+// Cierre de sesión (opcional, si quieres incluirlo aquí)
 if (isset($_GET['logout'])) {
     session_destroy();
-    header("Location: login.php");
+    header("Location: /prueba_php/proyecto/login.php");
     exit;
 }
 ?>
