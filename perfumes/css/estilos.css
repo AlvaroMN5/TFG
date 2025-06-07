@@ -918,3 +918,666 @@ body {
   height: 80px; /* antes era 40px; ajústalo al tamaño que necesites */
   width: auto;  /* para mantener la proporción original */
 }
+.sort-options {
+  margin: 1rem 0 2rem;
+  text-align: center;
+}
+
+.sort-options span {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+.sort-options a {
+  margin: 0 0.75rem;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 500;
+  padding-bottom: 2px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.sort-options a.active,
+.sort-options a:hover {
+  color: var(--color-primario);
+}
+
+.sort-options a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primario);
+}
+/* -----------------------------------
+   ESTILOS PARA LA BARRA DE BÚSQUEDA
+   ----------------------------------- */
+.search-bar {
+  max-width: 600px;          /* ancho máximo igual que tus tarjetas */
+  margin: 2rem auto 1rem;    /* centrado horizontal y separación superior/inferior */
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;          /* mismo borde gris suave */
+  border-radius: 4px;              /* misma esquina redondeada */
+  background-color: #fff;          /* fondo blanco */
+  font-size: 1rem;
+  color: var(--color-texto);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-primario);  /* borde rosa suave al enfocar */
+  box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.3);
+}
+
+.search-bar button {
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #c19185;  /* variante más oscura del rosa suave */
+  transform: translateY(-1px);
+}
+
+/* En móvil: que el input y el botón ocupen 100% con separación */
+@media (max-width: 600px) {
+  .search-bar {
+    flex-direction: column;
+  }
+  .search-bar input[type="text"],
+  .search-bar button {
+    width: 100%;
+  }
+}
+/* -----------------------------------
+   ENLACE ENVOLVENTE PARA TODA LA TARJETA
+   ----------------------------------- */
+.product-card-link {
+  display: block;           /* que ocupe todo el espacio de la tarjeta */
+  text-decoration: none;    /* quita el subrayado */
+  color: inherit;           /* hereda el color de la tarjeta */
+  margin-bottom: 1.5rem;    /* opcional: separación entre filas, como antes */
+}
+
+.product-card-link:hover .product-card {
+  /* Podemos añadir un efecto extra si se quiere */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.product-card-link .product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ajustes ya existentes para .product-card */
+.product-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* Quitamos cualquier margin-bottom extra aquí, ya lo maneja .product-card-link */
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+}
+
+.product-card .price {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+/* Si tenías .product-actions, ya no haría falta */
+/* -----------------------------------
+   ENVOLTORIO DE CADA TARJETA (wrapper)
+   ----------------------------------- */
+.product-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Para que el “Añadir al Carrito” quede justo debajo de la tarjeta */
+  margin-bottom: 1.5rem; 
+}
+
+/* -----------------------------------
+   ENLACE QUE ENVOLVIÓ LA TARJETA
+   ----------------------------------- */
+.product-card-link {
+  display: block;           /* ocupa todo el ancho disponible */
+  text-decoration: none;    /* quita subrayado */
+  color: inherit;           /* hereda el color normal */
+  border-radius: 8px;       /* para que coincida con border-radius interno */
+  overflow: hidden;         /* para que la tarjeta no desborde al hacer hover */
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.product-card-link:hover {
+  /* Al pasar por encima, sube un poco y oscurece la sombra */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+/* -----------------------------------
+   TARJETA DE PRODUCTO (sin cambios mayores)
+   ----------------------------------- */
+.product-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 200px;         /* ajusta según prefieras */
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 8px 8px 0 0; /* esquinas solo arriba para que coincida con el wrapper */
+}
+
+.product-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+}
+
+.product-card .price {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+/* -----------------------------------
+   BOTÓN DE “Añadir al Carrito”
+   ----------------------------------- */
+.add-cart-form {
+  margin-top: 0.75rem;   /* separación entre la tarjeta y el botón */
+  text-align: center;    /* centra el botón debajo de la tarjeta */
+}
+
+.add-cart-form .btn-add-cart {
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-secundario); /* por ejemplo, un verde suave */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-cart-form .btn-add-cart:hover {
+  background-color: #87b799; /* un verde más intenso en hover */
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   RESPONSIVE
+   ----------------------------------- */
+@media (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+  /* Que el botón “Añadir al Carrito” ocupe 100% del ancho en móvil */
+  .add-cart-form .btn-add-cart {
+    width: 100%;
+  }
+}
+/* -----------------------------------
+   STYLES PARA LA PÁGINA DEL CARRITO
+   ----------------------------------- */
+
+.cart-container {
+  max-width: 1000px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+}
+
+.cart-title {
+  font-size: 2rem;
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+/* -----------------------------------
+   TABLA DEL CARRITO
+   ----------------------------------- */
+.cart-table-wrapper {
+  overflow-x: auto; /* Para móvil, si no cabe en pantalla */
+  margin-bottom: 2rem;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cart-table thead {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+
+.cart-table thead th {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.cart-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.cart-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.cart-table td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+
+/* Columnas (puedes ajustar anchos) */
+.col-product {
+  width: 35%;
+}
+
+.col-price,
+.col-quantity,
+.col-subtotal,
+.col-actions {
+  width: auto;
+  text-align: center;
+}
+
+/* -----------------------------------
+   INFORMACIÓN DE CADA PRODUCTO
+   ----------------------------------- */
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.product-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.product-name {
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+/* -----------------------------------
+   FORMULARIO DE CANTIDAD
+   ----------------------------------- */
+.quantity-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.btn-update {
+  padding: 0.4rem 0.8rem;
+  background-color: var(--color-secundario);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-update:hover {
+  background-color: #7aa8b8;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   BOTÓN “ELIMINAR”
+   ----------------------------------- */
+.btn-remove {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-remove:hover {
+  background-color: #c19185;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   RESUMEN DE TOTAL
+   ----------------------------------- */
+.cart-summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cart-total-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.cart-total-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+/* -----------------------------------
+   BOTONES DE ACCIÓN (“Seguir Comprando” / “Proceder al Pago”)
+   ----------------------------------- */
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cart-actions .btn {
+  flex: 1 1 calc(50% - 0.5rem);
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: var(--color-texto);
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #c19185;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   ADAPTACIÓN A MÓVIL
+   ----------------------------------- */
+@media (max-width: 768px) {
+  .cart-table thead {
+    display: none; /* ocultar encabezado en móvil */
+  }
+  .cart-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .cart-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .cart-table tbody td:last-child {
+    border-bottom: none;
+  }
+  .col-product:before {
+    content: "Producto:";
+    font-weight: 600;
+  }
+  .col-price:before {
+    content: "Precio:";
+    font-weight: 600;
+  }
+  .col-quantity:before {
+    content: "Cantidad:";
+    font-weight: 600;
+  }
+  .col-subtotal:before {
+    content: "Subtotal:";
+    font-weight: 600;
+  }
+  .col-actions:before {
+    content: "Acciones:";
+    font-weight: 600;
+  }
+  .cart-summary {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cart-actions {
+    justify-content: center;
+  }
+}
+/* -----------------------------------
+   ESTILOS PARA LA PÁGINA DE CONTACTO
+   ----------------------------------- */
+
+.contact-section {
+  max-width: 600px;
+  margin: 2rem auto 4rem;
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: var(--sombra);
+}
+
+.contact-section h1 {
+  text-align: center;
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+}
+
+.contact-section .form-group {
+  margin-bottom: 1rem;
+}
+
+.contact-section .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.contact-section .form-group input,
+.contact-section .form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--color-texto);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-section .form-group input:focus,
+.contact-section .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.3);
+}
+
+.contact-section .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-section .btn-primary:hover {
+  background-color: #c19185;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   ESTILOS PARA MENSAJES DE RESPUESTA
+   ----------------------------------- */
+
+.response-message {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  display: none; /* oculto por defecto */
+}
+
+.response-message.success {
+  display: block;
+  background-color: #e6f9ec;    /* verde claro */
+  color: #2a662f;               /* verde oscuro */
+  border: 1px solid #2a662f;
+}
+
+.response-message.error {
+  display: block;
+  background-color: #fdecea;    /* rojo claro */
+  color: #a42828;               /* rojo oscuro */
+  border: 1px solid #a42828;
+}
+/* -----------------------------------
+   ESTILOS PARA “Mis Compras”
+   ----------------------------------- */
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-texto);
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.order-details .status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--color-secundario);
+  color: #fff;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.order-card .btn {
+  margin-top: auto;
+  align-self: flex-end;
+}

@@ -32,21 +32,26 @@
   </div>
 </div>
 
-<!-- Grid de productos destacados -->
+
 <div class="product-list">
-  <?php
-  require_once 'includes/db.php';
-  $stmt = $pdo->query("SELECT * FROM products LIMIT 6");
-  while ($product = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      echo '<div class="product-card fade-in">';
-      echo '<img src="' . BASE_URL . 'images/products/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['name']) . '">';
-      echo '<h3>' . htmlspecialchars($product['name']) . '</h3>';
-      echo '<p>' . htmlspecialchars(substr($product['description'], 0, 100)) . '...</p>';
-      echo '<span class="price">$' . number_format($product['price'], 2) . '</span>';
-      echo '<a href="product.php?id=' . (int)$product['id'] . '" class="btn">Ver Detalles</a>';
-      echo '</div>';
-  }
-  ?>
+    <?php
+    require_once 'includes/db.php';
+    $stmt = $pdo->query("SELECT * FROM products LIMIT 6");
+    while ($product = $stmt->fetch(PDO::FETCH_ASSOC)):
+    ?>
+        <!-- Envolvemos la tarjeta entera en un <a> -->
+        <a href="product.php?id=<?= (int)$product['id'] ?>" class="product-card-link">
+            <div class="product-card fade-in">
+                <img src="<?= BASE_URL ?>images/products/<?= htmlspecialchars($product['image']) ?>"
+                     alt="<?= htmlspecialchars($product['name']) ?>">
+                <h3><?= htmlspecialchars($product['name']) ?></h3>
+                <p class="price">$<?= number_format($product['price'], 2) ?></p>
+            </div>
+        </a>
+        <!-- No incluimos aquí ningún botón “Añadir al Carrito” -->
+    <?php endwhile; ?>
 </div>
+
+
 
 <?php include 'includes/footer.php'; ?>

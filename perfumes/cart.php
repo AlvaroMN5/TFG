@@ -87,7 +87,7 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
         </table>
         
         <div class="cart-actions">
-            <a href="index.php" class="btn">Seguir Comprando</a>
+            <a href="products.php" class="btn">Seguir Comprando</a>
             <a href="checkout.php" class="btn">Proceder al Pago</a>
         </div>
     <?php endif; ?>
