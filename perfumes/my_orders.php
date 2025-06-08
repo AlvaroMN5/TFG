@@ -12,7 +12,7 @@ if (!isset($_SESSION['user']['id'])) {
 }
 
 $userId = (int) $_SESSION['user']['id'];
-global $pdo;
+// $pdo ya viene de config.php
 
 // 2) Obtenemos los pedidos de este usuario
 $stmt = $pdo->prepare("
@@ -44,14 +44,19 @@ require_once __DIR__ . '/includes/header.php';
       <?php foreach ($orders as $order): ?>
         <div class="order-card">
           <div class="order-header">
-            <span>Pedido #<?= $order['id'] ?></span>
+            <span>Pedido #<?= htmlspecialchars($order['id']) ?></span>
             <span><?= date('d/m/Y', strtotime($order['created_at'])) ?></span>
           </div>
           <div class="order-details">
-            <span>Total: $<?= number_format($order['total'], 2) ?></span>
-            <span class="status <?= $order['status'] ?>"><?= ucfirst($order['status']) ?></span>
+            <span>
+              Total: <?= number_format($order['total'], 2, ',', '.') ?> €
+            </span>
+            <span class="status <?= htmlspecialchars($order['status']) ?>">
+              <?= ucfirst(htmlspecialchars($order['status'])) ?>
+            </span>
           </div>
-          <a href="order_details.php?id=<?= $order['id'] ?>" class="btn">Ver Detalles</a>
+       <a href="order_details.php?id=<?= $order['id'] ?>" class="btn">Ver Detalles</a>
+
         </div>
       <?php endforeach; ?>
     </div>
