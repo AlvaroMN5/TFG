@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Aplicar el tema guardado
   applyTheme(savedTheme);
   
-  // Opcional: Si tienes un selector de tema
+  // Opcional si tienes un selector de tema
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {

@@ -15,6 +15,23 @@ if (session_status() === PHP_SESSION_NONE) {
   <link rel="icon" href="<?= BASE_URL ?>images/products/logo.png">
 </head>
 <body>
+  <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h2>Su configuración de cookies</h2>
+    <p>
+      Utilizamos cookies para medir la audiencia del sitio web y ofrecerle servicios y
+      ofertas adaptados a sus intereses. También se usan cookies funcionales, necesarias
+      para el correcto funcionamiento del sitio web. Puede gestionar sus preferencias
+      en el <a href="<?php echo BASE_URL; ?>cookies.php">Centro de privacidad</a>.
+    </p>
+    <div class="cookie-buttons">
+      <button id="reject-all" class="cookie-btn reject">Rechazar todo</button>  
+      <button id="accept-all" class="cookie-btn accept">Aceptar todo</button>
+    </div>
+  </div>
+</div>
+
 <header class="header" id="header">
   <nav class="navbar">
     <div class="logo">
@@ -54,9 +71,6 @@ if (session_status() === PHP_SESSION_NONE) {
 </header>
 
 <main class="main-content">
+<script src="<?php echo BASE_URL; ?>assets/js/cookies.js" defer></script>
 
-<!-- Cargamos nuestro JS personalizado que contiene:
-     - toggleUserDropdown()
-     - animaciones fade-in
-     - zoom en imágenes de productos -->
 <script src="<?= BASE_URL ?>assets/js/main_custom.js" defer></script>

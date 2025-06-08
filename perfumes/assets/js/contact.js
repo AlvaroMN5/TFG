@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
     responseDiv.textContent = "";
     responseDiv.className = "response-message";
 
-    // Enviar datos con fetch (AJAX)
+    // Enviar datos 
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
     })
       .then(response => response.json())
       .then(data => {
-        // data = { success: true|false, message: "..." }
+        
         if (data.success) {
           responseDiv.textContent = data.message;
           responseDiv.classList.add("success");

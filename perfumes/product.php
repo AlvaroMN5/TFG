@@ -26,26 +26,29 @@ if (!$product) {
         </div>
         
         <div class="product-info">
-            <h1><?= $product['name'] ?></h1>
-            <div class="price">$<?= number_format($product['price'], 2) ?></div>
-            
-            <div class="product-meta">
-                <span>Disponibilidad: <?= $product['stock'] > 0 ? 'En stock' : 'Agotado' ?></span>
-            </div>
-            
-            <div class="product-description">
-                <p><?= nl2br($product['description']) ?></p>
-            </div>
-            
-            <?php if ($product['stock'] > 0): ?>
-                <form action="cart.php" method="get" class="add-to-cart">
-                    <input type="hidden" name="add" value="<?= $product['id'] ?>">
-                    <button type="submit" class="btn">Añadir al Carrito</button>
-                </form>
-            <?php else: ?>
-                <button class="btn" disabled>Producto Agotado</button>
-            <?php endif; ?>
-        </div>
+    <h1><?= htmlspecialchars($product['name']) ?></h1>
+    <div class="price">
+      <?= '€ ' . number_format($product['price'], 2, ',', '.') ?>
+    </div>
+    
+    <div class="product-meta">
+        <span>Disponibilidad: <?= $product['stock'] > 0 ? 'En stock' : 'Agotado' ?></span>
+    </div>
+    
+    <div class="product-description">
+        <p><?= nl2br(htmlspecialchars($product['description'])) ?></p>
+    </div>
+    
+    <?php if ($product['stock'] > 0): ?>
+        <form action="cart.php" method="get" class="add-to-cart">
+            <input type="hidden" name="add" value="<?= $product['id'] ?>">
+            <button type="submit" class="btn">Añadir al Carrito</button>
+        </form>
+    <?php else: ?>
+        <button class="btn" disabled>Producto Agotado</button>
+    <?php endif; ?>
+</div>
+
     </div>
 </div>
 

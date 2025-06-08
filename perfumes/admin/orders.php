@@ -32,7 +32,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>$<?= number_format($order['total'], 2) ?></td>
                 <td><?= $order['created_at'] ?></td>
                 <td>
-                    <a href="order_details.php?id=<?= $order['id'] ?>" class="btn-small">Ver</a>
+                    <a href="orders_details.php?id=<?= $order['id'] ?>" class="btn-small">Ver</a>
                 </td>
             </tr>
             <?php endforeach; ?>

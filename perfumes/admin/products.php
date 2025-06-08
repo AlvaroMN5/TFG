@@ -32,8 +32,10 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <td><?= $product['id'] ?></td>
                 <td><?= htmlspecialchars($product['name']) ?></td>
-                <td>$<?= number_format($product['price'], 2) ?></td>
-                <td><?= $product['stock'] ?></td>
+                <td>
+                    <?= '€ ' . number_format($product['price'], 2, ',', '.') ?>
+                </td>
+                <td><?= (int)$product['stock'] ?></td>
                 <td>
                     <a href="edit_product.php?id=<?= $product['id'] ?>" class="btn-small">Editar</a>
                     <a href="delete_product.php?id=<?= $product['id'] ?>" class="btn-small delete">Eliminar</a>

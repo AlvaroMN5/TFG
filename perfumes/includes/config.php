@@ -5,7 +5,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'perfume_shop');
 
-// Ruta relativa desde la raíz del servidor (para header("Location: ..."))
+// Ruta relativa desde la raíz del servidor 
 define('BASE_PATH', '/prueba_php/proyecto/');
 
 // URL completa (http://) para enlaces en HTML, CSS y JS

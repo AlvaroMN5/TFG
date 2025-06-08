@@ -22,7 +22,7 @@ function require_admin() {
 
 }
 
-// Cierre de sesión (opcional, si quieres incluirlo aquí)
+// Cierre de sesión 
 if (isset($_GET['logout'])) {
     session_destroy();
     header("Location: /prueba_php/proyecto/login.php");

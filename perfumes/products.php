@@ -66,19 +66,20 @@ include 'includes/header.php';
         <?php else: ?>
             <?php foreach ($products as $product): ?>
                 <div class="product-card-wrapper">
-                  <!-- 1) Enlace que envuelve TODO lo que redirige a detalles -->
+                  <!-- Enlace a la página de detalle -->
                   <a href="product.php?id=<?= (int)$product['id'] ?>" class="product-card-link">
                     <div class="product-card fade-in">
                       <img src="<?= BASE_URL ?>images/products/<?= htmlspecialchars($product['image']) ?>"
                            alt="<?= htmlspecialchars($product['name']) ?>">
                       <h3><?= htmlspecialchars($product['name']) ?></h3>
-                      <p class="price">$<?= number_format($product['price'], 2) ?></p>
+                      <p class="price">
+                        <?= '€ ' . number_format($product['price'], 2, ',', '.') ?>
+                      </p>
                     </div>
                   </a>
 
-                  <!-- 2) Fuera del <a>, botón independiente “Añadir al Carrito” -->
+                  <!-- Botón “Añadir al Carrito” -->
                   <form action="cart.php" method="get" class="add-cart-form">
-                    <!-- Asumimos que “cart.php?add=ID” agrega el producto al carrito -->
                     <input type="hidden" name="add" value="<?= (int)$product['id'] ?>">
                     <button type="submit" class="btn btn-add-cart">Añadir al Carrito</button>
                   </form>

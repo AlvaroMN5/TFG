@@ -1,7 +1,6 @@
-// assets/js/main_custom.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1) Toggle del dropdown de usuario
+  // Toggle del dropdown de usuario
   function toggleUserDropdown() {
     const dropdown = document.getElementById("userDropdown");
     dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2) Animaciones 'fade-in' al hacer scroll
+  //  Animaciones al hacer scroll
   const faders = document.querySelectorAll(".fade-in");
   const appearOptions = { threshold: 0.1 };
   const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     appearOnScroll.observe(fader);
   });
 
-  // 3) Zoom suave en imágenes de producto (opcional)
   const productImgs = document.querySelectorAll(".product-card img");
   productImgs.forEach(img => {
     img.addEventListener("mouseenter", () => {
@@ -43,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-// assets/js/main_custom.js
 
 document.addEventListener("DOMContentLoaded", () => {
   const slidesContainer = document.querySelector(".carousel-slides");
@@ -56,12 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalSlides = slides.length; // Debe ser 5
 
   function updateCarousel() {
-    // Cada slide ocupa 20% del ancho total (500%), así que:
-    // index 0 => translateX(0%)
-    // index 1 => translateX(-20%)
-    // index 2 => translateX(-40%)
-    // index 3 => translateX(-60%)
-    // index 4 => translateX(-80%)
+   
     const offset = currentIndex * 20;
     slidesContainer.style.transform = `translateX(-${offset}%)`;
 

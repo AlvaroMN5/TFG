@@ -38,7 +38,7 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
     $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
     $stmt->execute([$product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($product) {
         $product['quantity'] = $quantity;
         $product['subtotal'] = $product['price'] * $quantity;
@@ -52,10 +52,10 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
 
 <div class="container">
     <h2>Tu Carrito de Compras</h2>
-    
+
     <?php if (empty($cart_items)): ?>
         <p>Tu carrito está vacío</p>
-        <a href="index.php" class="btn">Seguir Comprando</a>
+        <a href="products.php" class="btn">Seguir Comprando</a>
     <?php else: ?>
         <table class="cart-table">
             <thead>
@@ -70,10 +70,14 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
             <tbody>
                 <?php foreach ($cart_items as $item): ?>
                 <tr>
-                    <td><?= $item['name'] ?></td>
-                    <td>$<?= number_format($item['price'], 2) ?></td>
-                    <td><?= $item['quantity'] ?></td>
-                    <td>$<?= number_format($item['subtotal'], 2) ?></td>
+                    <td><?= htmlspecialchars($item['name']) ?></td>
+                    <td>
+                        <?= number_format($item['price'], 2, ',', '.') . ' €' ?>
+                    </td>
+                    <td><?= (int)$item['quantity'] ?></td>
+                    <td>
+                        <?= number_format($item['subtotal'], 2, ',', '.') . ' €' ?>
+                    </td>
                     <td>
                         <a href="cart.php?remove=<?= $item['id'] ?>" class="btn">Eliminar</a>
                     </td>
@@ -81,12 +85,15 @@ foreach ($_SESSION['cart'] as $product_id => $quantity) {
                 <?php endforeach; ?>
                 <tr class="total-row">
                     <td colspan="3"><strong>Total</strong></td>
-                    <td colspan="2">$<?= number_format($total, 2) ?></td>
+                    <td colspan="2">
+                        <?= number_format($total, 2, ',', '.') . ' €' ?>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        
+
         <div class="cart-actions">
+            <!-- Ahora apunta a products.php -->
             <a href="products.php" class="btn">Seguir Comprando</a>
             <a href="checkout.php" class="btn">Proceder al Pago</a>
         </div>
