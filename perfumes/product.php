@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/config.php';
 require_once 'includes/db.php';
 
 if (!isset($_GET['id'])) {
@@ -15,41 +16,42 @@ if (!$product) {
     header("Location: index.php");
     exit;
 }
+
+include 'includes/header.php';
 ?>
+<div class="product-page">
+  <div class="product-grid">
+    <!-- Columna izquierda: imagen -->
+    <div class="product-image">
+      <img src="<?= BASE_URL ?>images/products/<?= htmlspecialchars($product['image']) ?>"
+           alt="<?= htmlspecialchars($product['name']) ?>">
+    </div>
 
-<?php include 'includes/header.php'; ?>
+    <!-- Columna derecha: info -->
+    <div class="product-info">
+      <h1><?= htmlspecialchars($product['name']) ?></h1>
+      <div class="price">
+        <?= number_format($product['price'], 2, ',', '.') ?> €
+      </div>
+      <div class="product-meta">
+        <span>
+          <strong>Disponibilidad:</strong>
+          <?= $product['stock'] > 0 ? 'En stock' : 'Agotado' ?>
+        </span>
+      </div>
+      <div class="product-description">
+        <?= nl2br(htmlspecialchars($product['description'])) ?>
+      </div>
 
-<div class="container product-page">
-    <div class="product-grid">
-        <div class="product-image">
-            <img src="images/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
-        </div>
-        
-        <div class="product-info">
-    <h1><?= htmlspecialchars($product['name']) ?></h1>
-    <div class="price">
-      <?= '€ ' . number_format($product['price'], 2, ',', '.') ?>
-    </div>
-    
-    <div class="product-meta">
-        <span>Disponibilidad: <?= $product['stock'] > 0 ? 'En stock' : 'Agotado' ?></span>
-    </div>
-    
-    <div class="product-description">
-        <p><?= nl2br(htmlspecialchars($product['description'])) ?></p>
-    </div>
-    
-    <?php if ($product['stock'] > 0): ?>
+      <?php if ($product['stock'] > 0): ?>
         <form action="cart.php" method="get" class="add-to-cart">
-            <input type="hidden" name="add" value="<?= $product['id'] ?>">
-            <button type="submit" class="btn">Añadir al Carrito</button>
+          <input type="hidden" name="add" value="<?= $product['id'] ?>">
+          <button type="submit" class="btn btn-primary">Añadir al Carrito</button>
         </form>
-    <?php else: ?>
-        <button class="btn" disabled>Producto Agotado</button>
-    <?php endif; ?>
-</div>
-
+      <?php else: ?>
+        <button class="btn btn-secondary" disabled>Agotado</button>
+      <?php endif; ?>
     </div>
+  </div>
 </div>
-
 <?php include 'includes/footer.php'; ?>
